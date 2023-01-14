@@ -12,6 +12,7 @@ const passTool = document.querySelector('.passTool');
 const mailFilter = document.querySelector('.mailFilter');
 const test4 = document.querySelector('.test4');
 const pOption=document.querySelector('.pOptions');
+const pNotContain=document.querySelector('.pNotContain');
 const insert=document.querySelector('.pInsert');
 const pModify=document.querySelector('.pModify');
 // body events listners 
@@ -53,11 +54,13 @@ emailToemail.addEventListener("click", emailToemailClick);
 const passOptimiser = document.querySelector('.passOptimiser')
 const insertText = document.querySelector('.insertText')
 const modify = document.querySelector('.modify')
+const passNotContain = document.querySelector('.passNotContain')
 
 // event listners PASSWORD_TOOLs
 passOptimiser.addEventListener("click", passOptimiserClick)
 insertText.addEventListener("click", insertTextClick)
 modify.addEventListener("click", modifyClick)
+passNotContain.addEventListener("click", passNotContainClick)
 
 // sidebar elements MAILFILTER
 let domainbox=document.querySelector('.domainbox');
@@ -103,6 +106,7 @@ function ShowInsertTab(){
     insert.classList.remove("displaynone");
     pOption.classList.add("displaynone");
     pModify.classList.add("displaynone");
+    pNotContain.classList.add("displaynone");
 }
 function HideModifyTab(){
     insert.classList.remove("displaynone");
@@ -113,6 +117,8 @@ function ShowModifyTab(){
     insert.classList.add("displaynone");
     pModify.classList.remove("displaynone");
     pOption.classList.add("displaynone");
+    pNotContain.classList.add("displaynone");
+
 }
 
 // click functions
@@ -196,6 +202,15 @@ function modifyClick() {
     setSactive(this);
     HideInsertTab();
     ShowModifyTab();
+}
+function passNotContainClick() {
+    removeAllSactive();
+    setSactive(this);
+    HideModifyTab();
+    ShowInsertTab();
+    insert.classList.add("displaynone");
+    pNotContain.classList.remove("displaynone");
+
 }
 function mailFilterClick() {
     removeAllActive()
@@ -398,7 +413,7 @@ function passOptimiserF() {
             rsymbol = "(?=.*[*\\.!@#$%^&\"',.?~`_+\\-])"
         }
         let contains_regex = new RegExp(`^.*:${rupper}${rlower}${rnum}${rsymbol}[\\S]*$`, "gm")
-        console.log(contains_regex);
+        // console.log(contains_regex);
         let result = lines.match(contains_regex);
         return result;
     }
@@ -481,6 +496,37 @@ else if(pLowerCase.checked==true){
     let match=lines.replace(regex,function(a) { return a.toLowerCase(); });
     input.value=match;
 }
+}
+function passNotContainF(){
+    let pNotupper = document.querySelector('.pNotupper');
+    let pNotlower = document.querySelector('.pNotlower');
+    let pNotnum = document.querySelector('.pNotnum');
+    let pNotsymbol = document.querySelector('.pNotsymbol');
+    let rupper = "", rlower = "", rnum = "", rsymbol = "";
+    if (pNotupper.checked==true) {
+        rupper="(?![A-Z])"
+    }
+    if (pNotlower.checked==true) {
+        rlower="(?![a-z])"
+    }
+    if (pNotnum.checked==true) {
+        rnum="(?![0-9])"
+    }
+    if (pNotsymbol.checked==true) {
+        rsymbol="(?![*\\.!@#$%^&\"',.?~`_+\\-])"
+    }
+    let regex=new RegExp(`^.*:(?:${rupper}${rlower}${rnum}${rsymbol}.)*$`,"gm");
+    let lines=input.value;
+    let result = lines.match(regex);
+    if (result == null) {
+        result = "";
+        console.log("Empty match");
+    }
+    else {
+        // join replace the , in the sting to the given character in the "".
+        result = result.join("\n");
+    }
+    input.value=result;
 }
 function mailfilterDefaultF(){
     let MFexact1=document.querySelector('.MFexact1');
@@ -619,6 +665,9 @@ function gettext() {
             break;
         case modify:
             modifyF();
+            break;
+        case passNotContain:
+            passNotContainF();
             break;
         case mailfilterDefault:
             mailfilterDefaultF();

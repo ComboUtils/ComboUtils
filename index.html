@@ -38,6 +38,7 @@
                     <li class="PT passOptimiser vnavbar displaynone">Pass Optimiser</li>
                     <li class="PT insertText vnavbar displaynone">Insert Text</li>
                     <li class="PT modify vnavbar displaynone">Modify</li>
+                    <li class="PT passNotContain vnavbar displaynone">Not Contains</li>
                     <!-- mailFilter -->
                     <li class="MF mailfilterDefault vnavbar displaynone">Mailfilter</li>
                     <li class="MF multiDomain vnavbar displaynone">Multi-Domain</li>
@@ -53,12 +54,12 @@
                     <label>
                         <input type="checkbox" name="plength" class="plength" value="length"> Length: </label>
                     <label>
-                        <input type="checkbox" name="pmin" class="pmin" value="min"> Min: 
-                        <input type="number" name="mininput" class="mininput" min="0" max="999" >
+                        <input type="checkbox" name="pmin" class="pmin" value="min"> Min:
+                        <input type="number" name="mininput" class="mininput" min="0" max="999">
                     </label>
                     <label>
                         <input type="checkbox" name="pmax" class="pmax" value="max"> Max:
-                        <input type="number" name="maxinput" class="maxinput" min="0" max="999" >
+                        <input type="number" name="maxinput" class="maxinput" min="0" max="999">
                     </label>
                     <legend>Must Contains:</legend>
                     <label><input type="checkbox" name="pupper" class="pupper" value="upper">Uppercase</label>
@@ -67,40 +68,51 @@
                     <label><input type="checkbox" name="psymbol" class="psymbol" value="symbol">Symbol</label>
                 </fieldset>
                 <div class="insert">
-                <fieldset class="pInsert displaynone">
-                    <legend>Insert</legend>
-                    <label><input type="radio" name="pinsert" class="pbefore pinsertradio" value="length"> Before </label>
-                    <label><input type="radio" name="pinsert" class="pafter pinsertradio" value="length"> After </label>
-                    <br>
-                    Text:<input type="text" name="ptext" class="ptext" size="15">                    
-                </fieldset></div>
+                    <fieldset class="pInsert displaynone">
+                        <legend>Insert</legend>
+                        <label><input type="radio" name="pinsert" class="pbefore pinsertradio" value="length"> Before
+                        </label>
+                        <label><input type="radio" name="pinsert" class="pafter pinsertradio" value="length"> After
+                        </label>
+                        <br>
+                        Text:<input type="text" name="ptext" class="ptext" size="15">
+                    </fieldset>
+                </div>
                 <div class="modify">
                     <fieldset class="pModify displaynone">
                         <legend>Modify 1st Character to:</legend>
-                        <label><input type="radio" name="pmodify" class="pUpperCase pmodifyradio" value="length">Uppercase </label>
-                        <label><input type="radio" name="pmodify" class="pLowerCase pmodifyradio" value="length">Lowercase </label>
+                        <label><input type="radio" name="pmodify" class="pUpperCase pmodifyradio"
+                                value="length">Uppercase </label>
+                        <label><input type="radio" name="pmodify" class="pLowerCase pmodifyradio"
+                                value="length">Lowercase </label>
                     </fieldset>
                 </div>
+                <fieldset class="pNotContain displaynone">
+                    <legend>Must Not Contains:</legend>
+                    <label><input type="checkbox" name="pNotupper" class="pNotupper" value="Notupper">Uppercase</label>
+                    <label><input type="checkbox" name="pNotlower" class="pNotlower" value="Notlower">Lowercase</label>
+                    <label><input type="checkbox" name="pNotnum" class="pNotnum" value="Notnumber">Number</label>
+                    <label><input type="checkbox" name="pNotsymbol" class="pNotsymbol" value="Notsymbol">Symbol</label>
+                </fieldset>
             </div>
             <div class="MFoptions displaynone">
                 <div class="mailfilterBox">
                     <fieldset class="MFdefault">
                         <legend>Domain name:</legend>
-                        (eg:@gmail.com) <input type="text" name="MFtext" class="MFtext">    
+                        (eg:@gmail.com) <input type="text" name="MFtext" class="MFtext">
                         <br>
                         <div class="MFradio1">
-                        <label><input type="checkbox" name="MFexact" class="MFexact1">Exact Match</label>        
-                    </div>                
+                            <label><input type="checkbox" name="MFexact" class="MFexact1">Exact Match</label>
+                        </div>
                     </fieldset>
                     <fieldset class="MFdomainlist">
                         <legend>Domain list:</legend>
-            <textarea class="border domain domainlist" rows="5" cols="30"></textarea>
-            <!-- (eg:@gmail.com) <input type="textfield" name="MFtext" class="MFtext">                     -->
-            <br>
-            <div class="MFradio">
-            <label><input type="checkbox" name="MFremaining" class="MFremaining">Remaining</label>
-            <label><input type="checkbox" name="MFexact" class="MFexact">Exact Match</label>        
-        </div>
+                        <textarea class="border domain domainlist" rows="5" cols="30"></textarea>
+                        <br>
+                        <div class="MFradio">
+                            <label><input type="checkbox" name="MFremaining" class="MFremaining">Remaining</label>
+                            <label><input type="checkbox" name="MFexact" class="MFexact">Exact Match</label>
+                        </div>
                     </fieldset>
                 </div>
             </div>
@@ -112,8 +124,10 @@
         </div>
         <div class="margin"></div>
         <div class="domainbox">
-            <div class="displaynone"><legend class="domaintitle">Test</legend>
-            <textarea name="domainbox" id="domainbox" class="border domain" rows="10" cols="40"></textarea></div>
+            <div class="displaynone">
+                <legend class="domaintitle">Test</legend>
+                <textarea name="domainbox" id="domainbox" class="border domain" rows="10" cols="40"></textarea>
+            </div>
         </div>
     </div>
     <script src="script.js">

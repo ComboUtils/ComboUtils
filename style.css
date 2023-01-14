@@ -111,7 +111,7 @@ li.vnavbar:hover{
     border: 1px solid black;
     border-radius: 4px;
 }
-.pOptions,.pInsert,.pModify,.MFoptions{
+.pOptions,.pInsert,.pModify,.MFoptions,.pNotContain{
 margin: 3px;
 color: white;
 }

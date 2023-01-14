@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextUtils</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="horizontalnav">
+            <ul class="navbar">
+                <li class="comboFilter navbar active">Combo Filter</li>
+                <li class="passTool navbar">Password Tools</li>
+                <li class="mailFilter navbar">Mail Filter</li>
+                <li class="test4 navbar">Combo Filter</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="mainbody">
+        <div class="sidebar">
+            <nav class="verticlenav">
+                <ul class="verticlebar">
+                    <!-- combo filter  -->
+                    <li class="CF comboOptimiser vnavbar sactive">Combo Optimiser</li>
+                    <li class="CF captureRemover vnavbar">Capture Remover</li>
+                    <li class="CF removeDuplicate vnavbar">Remove Duplicate</li>
+                    <li class="CF getDuplicate vnavbar">Get Duplicate</li>
+                    <li class="CF randomize vnavbar">Randomize</li>
+                    <li class="CF removeEmptylines vnavbar">Remove EmptyLines</li>
+                    <li class="CF sortLines vnavbar">Sort Lines</li>
+                    <li class="CF emailToUser vnavbar">Email:Pass <br>==> User:Pass</li>
+                    <li class="CF emailToemail vnavbar">Email:Pass<br>or Any ==> Email</li>
+                    <!-- Password Tools  -->
+                    <li class="PT passOptimiser vnavbar displaynone">Pass Optimiser</li>
+                    <li class="PT insertText vnavbar displaynone">Insert Text</li>
+                    <li class="PT modify vnavbar displaynone">Modify</li>
+                    <!-- mailFilter -->
+                    <li class="MF mailfilterDefault vnavbar displaynone">Mailfilter</li>
+                    <li class="MF multiDomain vnavbar displaynone">Multi-Domain</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container">
+            <textarea name="input" id="input_box" class="input border"></textarea>
+            <div class="options displaynone">
+                <fieldset class="pOptions">
+                    <legend>Options</legend>
+                    <label>
+                        <input type="checkbox" name="plength" class="plength" value="length"> Length: </label>
+                    <label>
+                        <input type="checkbox" name="pmin" class="pmin" value="min"> Min: 
+                        <input type="number" name="mininput" class="mininput" min="0" max="999" >
+                    </label>
+                    <label>
+                        <input type="checkbox" name="pmax" class="pmax" value="max"> Max:
+                        <input type="number" name="maxinput" class="maxinput" min="0" max="999" >
+                    </label>
+                    <legend>Must Contains:</legend>
+                    <label><input type="checkbox" name="pupper" class="pupper" value="upper">Uppercase</label>
+                    <label><input type="checkbox" name="plower" class="plower" value="lower">Lowercase</label>
+                    <label><input type="checkbox" name="pnum" class="pnum" value="number">Number</label>
+                    <label><input type="checkbox" name="psymbol" class="psymbol" value="symbol">Symbol</label>
+                </fieldset>
+                <div class="insert">
+                <fieldset class="pInsert displaynone">
+                    <legend>Insert</legend>
+                    <label><input type="radio" name="pinsert" class="pbefore pinsertradio" value="length"> Before </label>
+                    <label><input type="radio" name="pinsert" class="pafter pinsertradio" value="length"> After </label>
+                    <br>
+                    Text:<input type="text" name="ptext" class="ptext" size="15">                    
+                </fieldset></div>
+                <div class="modify">
+                    <fieldset class="pModify displaynone">
+                        <legend>Modify 1st Character to:</legend>
+                        <label><input type="radio" name="pmodify" class="pUpperCase pmodifyradio" value="length">Uppercase </label>
+                        <label><input type="radio" name="pmodify" class="pLowerCase pmodifyradio" value="length">Lowercase </label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="MFoptions displaynone">
+                <div class="mailfilterBox">
+                    <fieldset class="MFdefault">
+                        <legend>Domain name:</legend>
+                        (eg:@gmail.com) <input type="text" name="MFtext" class="MFtext">    
+                        <br>
+                        <div class="MFradio1">
+                        <label><input type="checkbox" name="MFexact" class="MFexact1">Exact Match</label>        
+                    </div>                
+                    </fieldset>
+                    <fieldset class="MFdomainlist">
+                        <legend>Domain list:</legend>
+            <textarea class="border domain domainlist" rows="5" cols="30"></textarea>
+            <!-- (eg:@gmail.com) <input type="textfield" name="MFtext" class="MFtext">                     -->
+            <br>
+            <div class="MFradio">
+            <label><input type="checkbox" name="MFremaining" class="MFremaining">Remaining</label>
+            <label><input type="checkbox" name="MFexact" class="MFexact">Exact Match</label>        
+        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="BTNs">
+                <button class="actionBtn border button" id="submit_btn">Submit</button>
+                <button class="downloadBtn border button">Download</button>
+                <img src="/img/copyWhite.png" class="copyBtn">
+            </div>
+        </div>
+        <div class="margin"></div>
+        <div class="domainbox">
+            <div class="displaynone"><legend class="domaintitle">Test</legend>
+            <textarea name="domainbox" id="domainbox" class="border domain" rows="10" cols="40"></textarea></div>
+        </div>
+    </div>
+    <script src="script.js">
+    </script>
+</body>
+
+</html>

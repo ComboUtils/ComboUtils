@@ -160,6 +160,7 @@ input[type="number"],.ptext,.MFtext{
     /* border: 1.5px solid black; */
 }
 .copyBtn{
+    color: white;
     padding:0px 5px;
     height: 1.9rem;
 }

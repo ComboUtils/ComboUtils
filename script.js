@@ -189,6 +189,7 @@ function passOptimiserClick() {
     setSactive(this);
     HideInsertTab();
     HideModifyTab();
+    pNotContain.classList.add("displaynone");
     insert.classList.add("displaynone");
 }
 function insertTextClick() {

@@ -475,7 +475,6 @@ else if(pafter.checked==true){
     ptextvalue=ptext.value;
     let lines=input.value;
     regex=/$/gm; 
-    replace_value=':'+ptextvalue;
     match=lines.replace(regex,ptextvalue);
     input.value=match;
 }

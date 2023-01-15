@@ -11,10 +11,10 @@ const comboFilter = document.querySelector('.comboFilter');
 const passTool = document.querySelector('.passTool');
 const mailFilter = document.querySelector('.mailFilter');
 const test4 = document.querySelector('.test4');
-const pOption=document.querySelector('.pOptions');
-const pNotContain=document.querySelector('.pNotContain');
-const insert=document.querySelector('.pInsert');
-const pModify=document.querySelector('.pModify');
+const pOption = document.querySelector('.pOptions');
+const pNotContain = document.querySelector('.pNotContain');
+const insert = document.querySelector('.pInsert');
+const pModify = document.querySelector('.pModify');
 // body events listners 
 downloadBtn.addEventListener('click', downloadtxt);
 copyBtn.addEventListener("click", CopyToClipboard);
@@ -63,10 +63,10 @@ modify.addEventListener("click", modifyClick)
 passNotContain.addEventListener("click", passNotContainClick)
 
 // sidebar elements MAILFILTER
-let domainbox=document.querySelector('.domainbox');
-let domainlist=document.querySelector('.domainlist');
-let MFdefault=document.querySelector('.MFdefault');
-let MFdomainlist=document.querySelector('.MFdomainlist');
+let domainbox = document.querySelector('.domainbox');
+let domainlist = document.querySelector('.domainlist');
+let MFdefault = document.querySelector('.MFdefault');
+let MFdomainlist = document.querySelector('.MFdomainlist');
 const mailfilterDefault = document.querySelector('.mailfilterDefault')
 const multiDomain = document.querySelector('.multiDomain')
 
@@ -90,30 +90,30 @@ function setActive(e) {
     e.classList.add('active');
 }
 function removedisplay() {
-    for (i = 0; i < vnavbar.length; i++) {
+    for (let i = 0; i < vnavbar.length; i++) {
         vnavbar[i].classList.add("displaynone");
     }
     options.classList.add("displaynone"); //Options box for passtools
     MFoptions.classList.add("displaynone"); //Options box for mailfilter
     domainbox.classList.add("displaynone");
 }
-function HideInsertTab(){
+function HideInsertTab() {
     insert.classList.add("displaynone");
     pOption.classList.remove("displaynone");
     pModify.classList.remove("displaynone");
 }
-function ShowInsertTab(){
+function ShowInsertTab() {
     insert.classList.remove("displaynone");
     pOption.classList.add("displaynone");
     pModify.classList.add("displaynone");
     pNotContain.classList.add("displaynone");
 }
-function HideModifyTab(){
+function HideModifyTab() {
     insert.classList.remove("displaynone");
     pModify.classList.add("displaynone");
     pOption.classList.remove("displaynone");
 }
-function ShowModifyTab(){
+function ShowModifyTab() {
     insert.classList.add("displaynone");
     pModify.classList.remove("displaynone");
     pOption.classList.add("displaynone");
@@ -126,7 +126,7 @@ function comboFilterClick() {
     removeAllActive()
     setActive(this);
     removedisplay();
-    for (i = 0; i < barcomboFilter.length; i++) {
+    for (let i = 0; i < barcomboFilter.length; i++) {
         barcomboFilter[i].classList.remove("displaynone");
     }
     removeAllSactive();
@@ -174,7 +174,7 @@ function passToolClick() {
     removeAllActive()
     setActive(this);
     removedisplay();
-    for (i = 0; i < barpassTool.length; i++) {
+    for (let i = 0; i < barpassTool.length; i++) {
         barpassTool[i].classList.remove("displaynone");
     }
     options.classList.remove("displaynone");//Options box for passtools
@@ -217,7 +217,7 @@ function mailFilterClick() {
     removeAllActive()
     setActive(this);
     removedisplay();
-    for (i = 0; i < barmailfilter.length; i++) {
+    for (let i = 0; i < barmailfilter.length; i++) {
         barmailfilter[i].classList.remove("displaynone");
     }
     removeAllSactive();
@@ -226,14 +226,14 @@ function mailFilterClick() {
     MFdomainlist.classList.add('displaynone');
 
 }
-function mailfilterDefaultClick(){
+function mailfilterDefaultClick() {
     removeAllSactive();
     setSactive(this);
     MFdefault.classList.remove('displaynone');
     MFdomainlist.classList.add('displaynone');
     domainbox.classList.add("displaynone");
 }
-function multiDomainClick(){
+function multiDomainClick() {
     removeAllSactive();
     setSactive(this);
     MFdefault.classList.add('displaynone');
@@ -455,68 +455,68 @@ function passOptimiserF() {
         }
         input.value = result;
     }
-    else{
+    else {
         alert("No Checkbox selected for Password tool")
     }
 }
-function insertTextF(){
-    const pbefore=document.querySelector('.pbefore');
-    const pafter=document.querySelector('.pafter');
-    const ptext=document.querySelector('.ptext');
-if (pbefore.checked==true) {
-    ptextvalue=ptext.value;
-    let lines=input.value;
-    regex=/:/gm; 
-    replace_value=':'+ptextvalue;
-    match=lines.replace(regex,replace_value);
-    input.value=match;
+function insertTextF() {
+    const pbefore = document.querySelector('.pbefore');
+    const pafter = document.querySelector('.pafter');
+    const ptext = document.querySelector('.ptext');
+    if (pbefore.checked == true) {
+        ptextvalue = ptext.value;
+        let lines = input.value;
+        regex = /:/gm;
+        replace_value = ':' + ptextvalue;
+        match = lines.replace(regex, replace_value);
+        input.value = match;
+    }
+    else if (pafter.checked == true) {
+        ptextvalue = ptext.value;
+        let lines = input.value;
+        regex = /$/gm;
+        match = lines.replace(regex, ptextvalue);
+        input.value = match;
+    }
+    else alert("Checkbox NULL")
 }
-else if(pafter.checked==true){
-    ptextvalue=ptext.value;
-    let lines=input.value;
-    regex=/$/gm; 
-    match=lines.replace(regex,ptextvalue);
-    input.value=match;
-}
-else alert("Checkbox NULL")
-}
-function modifyF(){
-    const pUpperCase=document.querySelector('.pUpperCase');
-    const pLowerCase=document.querySelector('.pLowerCase');
-if(pUpperCase.checked==true){
-    let regex=/(?<=:)(\w)/gm;
-    let lines=input.value;
-    let match=lines.replace(regex,function(a) { return a.toUpperCase(); });
-    input.value=match;
+function modifyF() {
+    const pUpperCase = document.querySelector('.pUpperCase');
+    const pLowerCase = document.querySelector('.pLowerCase');
+    if (pUpperCase.checked == true) {
+        let regex = /(?<=:)(\w)/gm;
+        let lines = input.value;
+        let match = lines.replace(regex, function (a) { return a.toUpperCase(); });
+        input.value = match;
 
+    }
+    else if (pLowerCase.checked == true) {
+        let regex = /(?<=:)(\w)/gm;
+        let lines = input.value;
+        let match = lines.replace(regex, function (a) { return a.toLowerCase(); });
+        input.value = match;
+    }
 }
-else if(pLowerCase.checked==true){
-    let regex=/(?<=:)(\w)/gm;
-    let lines=input.value;
-    let match=lines.replace(regex,function(a) { return a.toLowerCase(); });
-    input.value=match;
-}
-}
-function passNotContainF(){
+function passNotContainF() {
     let pNotupper = document.querySelector('.pNotupper');
     let pNotlower = document.querySelector('.pNotlower');
     let pNotnum = document.querySelector('.pNotnum');
     let pNotsymbol = document.querySelector('.pNotsymbol');
     let rupper = "", rlower = "", rnum = "", rsymbol = "";
-    if (pNotupper.checked==true) {
-        rupper="(?![A-Z])"
+    if (pNotupper.checked == true) {
+        rupper = "(?![A-Z])"
     }
-    if (pNotlower.checked==true) {
-        rlower="(?![a-z])"
+    if (pNotlower.checked == true) {
+        rlower = "(?![a-z])"
     }
-    if (pNotnum.checked==true) {
-        rnum="(?![0-9])"
+    if (pNotnum.checked == true) {
+        rnum = "(?![0-9])"
     }
-    if (pNotsymbol.checked==true) {
-        rsymbol="(?![*\\.!@#$%^&\"',.?~`_+\\-])"
+    if (pNotsymbol.checked == true) {
+        rsymbol = "(?![*\\.!@#$%^&\"',.?~`_+\\-])"
     }
-    let regex=new RegExp(`^.*:(?:${rupper}${rlower}${rnum}${rsymbol}.)*$`,"gm");
-    let lines=input.value;
+    let regex = new RegExp(`^.*:(?:${rupper}${rlower}${rnum}${rsymbol}.)*$`, "gm");
+    let lines = input.value;
     let result = lines.match(regex);
     if (result == null) {
         result = "";
@@ -526,24 +526,24 @@ function passNotContainF(){
         // join replace the , in the sting to the given character in the "".
         result = result.join("\n");
     }
-    input.value=result;
+    input.value = result;
 }
-function mailfilterDefaultF(){
-    let MFexact1=document.querySelector('.MFexact1');
-    const MFtext=document.querySelector('.MFtext');
-    if(MFtext.value!=""){
-        let MFinput=MFtext.value;
-        MFinput=MFinput.replace('.','\\.'); //replacing input value
-        let regex=new RegExp(`^.*${MFinput}[\\S]*`,"gm");
+function mailfilterDefaultF() {
+    let MFexact1 = document.querySelector('.MFexact1');
+    const MFtext = document.querySelector('.MFtext');
+    if (MFtext.value != "") {
+        let MFinput = MFtext.value;
+        MFinput = MFinput.replace('.', '\\.'); //replacing input value
+        let regex = new RegExp(`^.*${MFinput}[\\S]*`, "gm");
         // let regex=new RegExp(`^.*${MFtext.value}[\\S]*`,"gm");
-        if(MFexact1.checked==true){
-            MFinput=MFinput.replace('@','');
-            MFinput=MFinput.replace(':','');
-            regex=new RegExp(`^.*(?<=@)[\\S]*${MFinput}[\\S]*(?<=:)[\\S]*`,"gm");
+        if (MFexact1.checked == true) {
+            MFinput = MFinput.replace('@', '');
+            MFinput = MFinput.replace(':', '');
+            regex = new RegExp(`^.*(?<=@)[\\S]*${MFinput}[\\S]*(?<=:)[\\S]*`, "gm");
         }
         // console.log(regex);
-        let lines=input.value;
-        let result=lines.match(regex);
+        let lines = input.value;
+        let result = lines.match(regex);
         if (result == null) {
             result = "";
             console.log("Empty match");
@@ -552,40 +552,42 @@ function mailfilterDefaultF(){
             // join replace the , in the sting to the given character in the "".
             result = result.join("\n");
         }
-        input.value=result;
+        input.value = result;
     }
 }
-function multiDomainF(){
-    let domainbox=document.querySelector('.domainbox');
-    let MFexact=document.querySelector('.MFexact');
-    let MFremaining=document.querySelector('.MFremaining');
-    let domainname=domainlist.value.split(/\n/);
+function multiDomainF() {
+    let domainbox = document.querySelector('.domainbox');
+    let MFexact = document.querySelector('.MFexact');
+    let MFremaining = document.querySelector('.MFremaining');
+    let domainname = domainlist.value.split(/\n/);
     // console.log(domainname);
-    function createBox(domainname){
-        if(domainname!=""){
-        let newbox=document.createElement('div');
-        let classname=domainname.replace(/[^a-z]*/gm,"");//creating class name without special character
-        // console.log(classname);
-        newbox.innerHTML=`<legend class="domaintitle">${domainname}</legend>
+    function createBox(domainname) {
+        if (domainname != "") {
+            let newbox = document.createElement('div');
+            let classname = domainname.replace(/[^a-z]*/gm, "");//creating class name without special character
+            // console.log(classname);
+            newbox.innerHTML = `<legend class="domaintitle">${domainname}</legend>
         <textarea name="domainbox" class="border domain ${classname}" rows="10" cols="40" placeholder="No result found"></textarea></div>`;
-        domainbox.append(newbox);}
-    else {
-     alert("DomainList Error");
-    }}
+            domainbox.append(newbox);
+        }
+        else {
+            alert("DomainList Error");
+        }
+    }
     domainname.forEach(element => {
         createBox(element);
-        let classname=element.replace(/[^a-z]*/gm,"");
+        let classname = element.replace(/[^a-z]*/gm, "");
         // console.log(classname);
-        let elementbox=document.querySelector(`.${classname}`)
-        element=element.replace('.','\\.');
-        let regex=new RegExp(`^.*${element}[\\S]*`,"gm");
-        if(MFexact.checked==true){
-            element=element.replace('@','');
-            element=element.replace(':','');
-            regex=new RegExp(`^.*(?<=@)[\\S]*${element}[\\S]*(?<=:)[\\S]*`,"gm");
+        let elementbox = document.querySelector(`.${classname}`)
+        element = element.replace('.', '\\.');
+        let regex = new RegExp(`^.*${element}[\\S]*`, "gm");
+        if (MFexact.checked == true) {
+            element = element.replace('@', '');
+            element = element.replace(':', '');
+            regex = new RegExp(`^.*(?<=@)[\\S]*${element}[\\S]*(?<=:)[\\S]*`, "gm");
         }
-        let lines=input.value;
-        let result=lines.match(regex);
+        let lines = input.value;
+        let result = lines.match(regex);
         if (result == null) {
             result = "";
             console.log("Empty match");
@@ -594,37 +596,34 @@ function multiDomainF(){
             // join replace the , in the sting to the given character in the "".
             result = result.join("\n");
         }
-        elementbox.value=result;
+        elementbox.value = result;
     });
-    let result_remaining=input.value;
-    if(MFremaining.checked==true){
+    let result_remaining = input.value;
+    if (MFremaining.checked == true) {
         createBox("Remaining Domains");
-        let classname="emainingomains";
-        let elementbox=document.querySelector(`.${classname}`)
-        let remainingTitle=elementbox.previousElementSibling;
+        let classname = "emainingomains";
+        let elementbox = document.querySelector(`.${classname}`)
+        let remainingTitle = elementbox.previousElementSibling;
         remainingTitle.classList.add("remainingTitle")
-        domainname.forEach(element =>{
-            let regex=new RegExp(`^(?:(?!${element}).)*$`,"gm");
-            result_remaining=result_remaining.match(regex);
+        domainname.forEach(element => {
+            let regex = new RegExp(`^(?:(?!${element}).)*$`, "gm");
+            result_remaining = result_remaining.match(regex);
             // console.log(result_remaining);
             if (result_remaining == null) {
-            result_remaining = "";
-            console.log("Empty match");
-        }
-        else {
-            // join replace the , in the sting to the given character in the "".
-            result_remaining = result_remaining.join("\n");
-        }
-    });
-        elementbox.value=result_remaining;
+                result_remaining = "";
+                console.log("Empty match");
+            }
+            else {
+                // join replace the , in the sting to the given character in the "".
+                result_remaining = result_remaining.join("\n");
+            }
+        });
+        elementbox.value = result_remaining;
     }
 }
 function gettext() {
     // let active = document.getElementsByClassName("active")
     let sactive = document.getElementsByClassName("sactive")
-    if (sactive == null) {
-        alert("Select one of the options from Sidebar");
-    }
     if (input.value == "") {
         alert("Input area empty.");
     }
@@ -680,43 +679,3 @@ function gettext() {
             break;
     }
 }
-
-
-
-// function removeDuplicatesF(){
-//     let array = input.value.split(/\r?\n/);
-//     let newline =   [];
-//     const map = {};
-//   for (let i = 0; i < array.length; i++) {
-//     if (map[array[i]]) {
-//       continue;
-//     } else {
-//       newline.push(array[i]);
-//       map[array[i]] = true;
-//     }
-//   }
-//     input.value=newline.join("\n");
-// }
-// function removeDuplicatesF(){
-//     let a = input.value.split(/\r?\n/);
-//     const map = {};
-//     let lines= a.filter(element => {
-//       if (map[element]) {
-//         return false
-//       } else {
-//         map[element] = true;
-//         return true;
-//       }
-//     });
-//     input.value=lines.join("\n");
-// }
-
-
-// function getDuplicatesF(){
-//     let lines = input.value.split(/\r?\n/);
-//     let newline = lines.filter((element, index) => {
-//         return lines.indexOf(element) !== index;
-//     });
-//     lines=null;
-//     input.value=newline.join("\n");
-// }

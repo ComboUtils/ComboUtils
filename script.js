@@ -10,7 +10,7 @@ const MFoptions = document.querySelector('.MFoptions');
 const comboFilter = document.querySelector('.comboFilter');
 const passTool = document.querySelector('.passTool');
 const mailFilter = document.querySelector('.mailFilter');
-const test4 = document.querySelector('.test4');
+const removeList = document.querySelector('.removeList');
 const pOption = document.querySelector('.pOptions');
 const pNotContain = document.querySelector('.pNotContain');
 const insert = document.querySelector('.pInsert');
@@ -22,12 +22,13 @@ actionBtn.addEventListener("click", gettext);
 comboFilter.addEventListener("click", comboFilterClick);
 passTool.addEventListener("click", passToolClick);
 mailFilter.addEventListener("click", mailFilterClick);
-test4.addEventListener("click", test4Click);
+removeList.addEventListener("click", removeListClick);
 
 // sidebar elements COMBO_FILTER
 const barpassTool = document.querySelectorAll('.PT');
 const barcomboFilter = document.querySelectorAll('.CF');
 const barmailfilter = document.querySelectorAll('.MF');
+const barremovelist = document.querySelectorAll('.RL');
 const randomize = document.querySelector('.randomize');
 const captureRemover = document.querySelector('.captureRemover');
 const removeDuplicate = document.querySelector('.removeDuplicate');
@@ -74,6 +75,14 @@ const multiDomain = document.querySelector('.multiDomain')
 mailfilterDefault.addEventListener("click", mailfilterDefaultClick)
 multiDomain.addEventListener("click", multiDomainClick)
 
+// sidebar elements REMOVELIST
+let removebox = document.querySelector('.removebox');
+let RLoptions = document.querySelector('.RLoptions');
+const removelistDefault = document.querySelector('.removelistDefault');
+let RLlist = document.querySelector('.RLlist');
+let RLremovelist = document.querySelector('.RLremovelist');
+// event listners REMOVELIST
+removelistDefault.addEventListener("click" , removelistDefaultClick )
 
 function removeAllSactive() {
     let sactive = document.getElementsByClassName("sactive");
@@ -96,6 +105,8 @@ function removedisplay() {
     options.classList.add("displaynone"); //Options box for passtools
     MFoptions.classList.add("displaynone"); //Options box for mailfilter
     domainbox.classList.add("displaynone");
+    removebox.classList.add("displaynone");
+    RLoptions.classList.add('displaynone');
 }
 function HideInsertTab() {
     insert.classList.add("displaynone");
@@ -242,10 +253,27 @@ function multiDomainClick() {
 
 }
 
-function test4Click() {
+function removeListClick() {
     removeAllActive()
     setActive(this);
     removedisplay();
+    for (let i = 0; i < barremovelist.length; i++) {
+        barremovelist[i].classList.remove("displaynone");
+    }
+    removeAllSactive();
+    setSactive(removelistDefault);
+    //MFdomainlist.classList.remove('displaynone');
+    //domainbox.classList.remove("displaynone");
+    RLoptions.classList.remove('displaynone');
+    removebox.classList.remove("displaynone");
+
+}
+function removelistDefaultClick(){
+    removeAllSactive();
+    setSactive(this);
+    RLoptions.classList.remove('displaynone');
+    removebox.classList.remove("displaynone");
+
 }
 
 function downloadtxt() {
@@ -621,6 +649,50 @@ function multiDomainF() {
         elementbox.value = result_remaining;
     }
 }
+function removelistDefaultF() {  
+    let RLremoved = document.querySelector('.RLremoved');
+    let listValue = RLremovelist.value.split(/\n/); 
+    let result_remaining = input.value;
+
+    if(RLremoved.checked ==true){
+    let newbox = document.createElement('div');
+    let classname = "RLremovedBox";//creating class name without special character
+    // console.log(classname);
+    newbox.innerHTML = `<legend class="removetitle">Removed</legend>
+    <textarea name="removebox" class="border domain ${classname}" rows="10" cols="40" placeholder="No result found"></textarea></div>`;
+    removebox.append(newbox);
+    let RLremovedBox = document.querySelector(".RLremovedBox")
+  let lines = input.value.split(/\r?\n/)
+  let rl = RLremovelist.value.split(/\r?\n/);
+   lines =[ ...lines, ...rl ]
+    console.log(lines);
+  const map = {};
+  let newline = lines.filter(element => {
+      if (map[element]) {
+          return true
+      } else {
+          map[element] = true;
+          return false;
+      }
+  });
+  lines = [...new Set(newline)];
+  RLremovedBox.value = lines.join("\n");
+}
+  
+  listValue.forEach(element => {
+    let regex = new RegExp(`^(?:(?!\\b${element}\\b).*)$`, "gm");
+    result_remaining = result_remaining.match(regex);
+    // console.log(result_remaining);
+    if (result_remaining == null) {
+        result_remaining = "";
+        console.log("Empty match");
+    }
+    else {
+        // join replace the , in the sting to the given character in the "".
+        result_remaining = result_remaining.join("\n");
+    }})
+  input.value = result_remaining;
+}
 function gettext() {
     // let active = document.getElementsByClassName("active")
     let sactive = document.getElementsByClassName("sactive")
@@ -673,6 +745,9 @@ function gettext() {
             break;
         case multiDomain:
             multiDomainF();
+            break;
+        case removelistDefault:
+            removelistDefaultF();
             break;
         default:
             console.log("DEfault");

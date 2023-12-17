@@ -18,7 +18,7 @@
                 <li class="comboFilter navbar active">Combo Filter</li>
                 <li class="passTool navbar">Password Tools</li>
                 <li class="mailFilter navbar">Mail Filter</li>
-                <li class="test4 navbar">ComingSoon</li>
+                <li class="removeList navbar">Remove List</li>
             </ul>
         </nav>
     </header>
@@ -44,6 +44,8 @@
                     <!-- mailFilter -->
                     <li class="MF mailfilterDefault vnavbar displaynone">Mailfilter</li>
                     <li class="MF multiDomain vnavbar displaynone">Multi-Domain</li>
+                    <!-- removelist -->
+                    <li class="RL removelistDefault vnavbar displaynone">Remove-List</li>
                 </ul>
             </nav>
         </div>
@@ -118,17 +120,37 @@
                     </fieldset>
                 </div>
             </div>
+            <div class="RLoptions displaynone">
+                <div class="removelistbox">
+                    <fieldset class="RLlist">
+                        <legend>List:</legend>
+                        <textarea class="border domain RLremovelist" rows="5" cols="60"></textarea>
+                        <br>
+                        <div class="RLradio">
+                            <label><input type="checkbox" name="RLremoved" class="RLremoved">Removed</label>
+                            <label><input type="checkbox" name="RLexact" class="RLexact">Exact Match</label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
             <div class="BTNs">
                 <button class="actionBtn border button" id="submit_btn">Submit</button>
                 <button class="downloadBtn border button">Download</button>
                 <img src="img/copyWhite.png" class="copyBtn" alt="Copy">
             </div>
+
         </div>
         <div class="margin"></div>
         <div class="domainbox">
             <div class="displaynone">
                 <legend class="domaintitle">Test</legend>
                 <textarea name="domainbox" id="domainbox" class="border domain" rows="10" cols="40"></textarea>
+            </div>
+        </div>
+        <div class="removebox">
+            <div class="displaynone">
+                <legend class="removetitle">Test</legend>
+                <textarea name="removebox" id="removebox" class="border domain" rows="10" cols="40"></textarea>
             </div>
         </div>
     </div>

@@ -94,10 +94,10 @@ li.vnavbar:hover{
     border: 2px solid rgb(114, 97, 97);
     background-color: rgb(61, 61, 61);
 }
-.emainingomains{
+.emainingomains , .RLremovedBox{
     background-color: rgb(1, 37, 31);
 }
-.remainingTitle{
+.remainingTitle , .removetitle{
     font-family: monospace;
     border: 2px solid rgb(189, 185, 185);
     font-size: x-large;
@@ -126,7 +126,7 @@ li.vnavbar:hover{
     border: 1px solid black;
     border-radius: 4px;
 }
-.pOptions,.pInsert,.pModify,.MFoptions,.pNotContain{
+.pOptions,.pInsert,.pModify,.MFoptions,.pNotContain,.RLoptions{
 margin: 3px;
 color: white;
 }
